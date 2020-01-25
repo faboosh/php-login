@@ -55,7 +55,7 @@ a {
         background-color: #cc2828;
         color: white;
         border-radius: 5px;
-        transform: 0.5s all;
+        transition: 0.5s all;
 
         &:hover {
             background-color: #4aac32; 
