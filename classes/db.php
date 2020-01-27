@@ -7,6 +7,11 @@ class DB {
     private $user = "root";
     private $password = "";
     private $charset = "utf8mb";
+    private $options = [
+        PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+        PDO::ATTR_EMULATE_PREPARES   => false,
+    ];
 
     public $pdo;
 
@@ -15,10 +20,11 @@ class DB {
             $this->pdo = new PDO(
                 "mysql:host=$this->host;
                 port=$this->port;
-                dbname=$this->db;
-                charset=$this->charset", 
+                dbname=$this->db;",
+                //charset=$this->charset", 
                 $this->user, 
-                $this->password
+                $this->password,
+                $this->options
             );
         } catch (PDOException $e) {
             echo "Error!: " . $e->getMessage() . "<br/>";

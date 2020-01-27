@@ -1,9 +1,10 @@
 <?php
+    include_once './classes/register.php';
+    $register = new Register();
 
-    if (isset($_POST['username'])) {
-        //om användarnamn
+    if (isset($_POST['username']) && isset($_POST['password'])) {
+        $register->registerUser($_POST['username'], $_POST['password']);
     }
-
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +19,7 @@
 <body>
     <div class="container">
         <h1>Application Registration</h1>
-        <form action="register.php" class="form">
+        <form action="register.php" method="POST" class="form">
             <input placeholder="Enter your username" name="username" type="text">
             <input placeholder="Enter your password" name="password" type="password">
             <button type="submit">Register</button>
