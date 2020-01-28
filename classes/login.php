@@ -1,27 +1,26 @@
 <?php
 
 include_once 'auth.php';
-include_once 'db.php';
 
-class Login {
+class Login
+{
     private $auth;
-    private $db;
 
-    function __construct() {
-        //Sets up DB link
-        $dbclass = new DB();
-        $this->db = $dbclass->pdo;
-
+    public function __construct()
+    {
         //Sets up authorization
         $this->auth = new Auth();
     }
 
-    function loginUser($username, $password) {
-        $query = "SELECT * FROM users WHERE username = :username";
-        $statement = $this->db->prepare($query);
-        $statement->bindValue(':username', $username);
-        $userData = $statement->fetch(PDO::FETCH_ASSOC);
-        print_r($userData);
-        //$this->auth->authlogin
+    public function loginUser($username, $password)
+    {
+        if ($this->auth->loginAuthentication($username, $password)) {
+            session_start();
+            $_SESSION['username'] = $username;
+            $GLOBALS['failedLogin'] = false;
+            header('Location: secret.php');
+        } else {
+            $GLOBALS['failedLogin'] = true;
+        }
     }
 }
