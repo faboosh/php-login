@@ -1,11 +1,11 @@
 <?php
-    include_once "./classes/login.php";
+require_once "./classes/login.php";
 
     $login = new Login();
 
-    if(!empty($_POST['username']) && !empty($_POST['password'])) {
+if (!empty($_POST['username']) && !empty($_POST['password'])) {
         $login->loginUser($_POST['username'], $_POST['password']);
-    }
+}
 ?>
 
 <!DOCTYPE html>

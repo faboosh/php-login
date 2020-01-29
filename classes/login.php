@@ -1,20 +1,20 @@
 <?php
 
-include_once 'auth.php';
+require_once 'auth.php';
 
 class Login
 {
-    private $auth;
+    private $_auth;
 
-    public function __construct()
+    function __construct()
     {
         //Sets up authorization
-        $this->auth = new Auth();
+        $this->_auth = new Auth();
     }
 
     public function loginUser($username, $password)
     {
-        if ($this->auth->loginAuthentication($username, $password)) {
+        if ($this->_auth->loginAuthentication($username, $password)) {
             session_start();
             $_SESSION['username'] = $username;
             $GLOBALS['failedLogin'] = false;
