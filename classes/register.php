@@ -1,6 +1,6 @@
 <?php
-require_once 'auth.php';
 require_once 'db.php';
+require_once 'auth.php';
 
 class Register
 {
@@ -20,8 +20,17 @@ class Register
     public function registerUser($username, $password)
     {
         if (ctype_alnum($username)) {
-            if (!$this->_auth->isRegistered($username)) {
-                $passwordHash = password_hash($password, PASSWORD_BCRYPT, array("cost" => 12));
+            //echo "User to be registered: $username <br>";
+            //echo "Found: ".$this->_auth->isRegistered($username);
+            $found = $this->_auth->isRegistered($username);
+            echo $found;
+            if ($found) {
+                echo "hejehekwhrkwhlkfha";
+            }
+            if (!$found) {
+                $passwordHash = password_hash(
+                    $password, PASSWORD_BCRYPT, array("cost" => 12)
+                );
 
                 $query = "INSERT INTO users
                             (`username`, `password`)

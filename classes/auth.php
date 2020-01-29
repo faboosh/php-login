@@ -11,7 +11,7 @@
      * @license  Open Source
      * @link     none
      * */
-require_once "db.php";
+include_once "db.php";
 
     /**  
      * Authentication packade
@@ -34,6 +34,7 @@ class Auth
     public function __construct()
     {
         $dbclass = new DB();
+        var_dump($dbclass);
         $this->_db = $dbclass->pdo;
     }
 
@@ -44,13 +45,16 @@ class Auth
      * 
      * @return any Returns user if found, otherwise false
      * */
-    public function isRegistered($username = null)
+    public function isRegistered($username = null) 
     {
-        $statement = $this->_db->prepare(
-            'SELECT * FROM users WHERE username = :username'
-        );
-        $statement->bindValue(':username', $username);
-        return $statement->execute();
+        $query = "SELECT * FROM users WHERE username = :username";
+        $statement = $this->_db->prepare($query);
+        $statement->bindValue(':username', $username, PDO::PARAM_STR);
+
+        $found = $statement->execute();
+        //$statement->debugDumpParams();
+        print_r($statement->fetch());      
+        return $found;
     }
 
     /**  

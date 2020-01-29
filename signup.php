@@ -1,5 +1,5 @@
 <?php
-include_once './classes/register.php';
+require_once './classes/register.php';
 $register = new Register();
 
 if (isset($_POST['username']) && isset($_POST['password'])) {
@@ -25,9 +25,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
         </form>
         <a href="index.php">Login here!</a>
         <?php
-            if (!empty($GLOBALS['failedReg'])) {
-                echo "<span class='failure'>" . $GLOBALS['failedReg'] . "</span>";
-            }
+            if (!empty($GLOBALS['failedReg'])) echo "<span class='failure'>" . $GLOBALS['failedReg'] . "</span>"
         ?>
     </div>
 </body>

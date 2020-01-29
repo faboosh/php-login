@@ -1,7 +1,19 @@
-<?php
+<?php 
+/**
+ * MyClass File Doc Comment
+ * 
+ * PHP version 7
+ * 
+ * @category MyClass
+ * @package  MyPackage
+ * @author   Display Name <robin@gmail.com>
+ * @license  http://www.gnu.org/copyleft/gpl.html GNU General Public License
+ * @link     http://www.hashbangcode.com/ * 
+ */
+
 require_once "./classes/login.php";
 
-    $login = new Login();
+$login = new Login();
 
 if (!empty($_POST['username']) && !empty($_POST['password'])) {
         $login->loginUser($_POST['username'], $_POST['password']);
@@ -27,7 +39,7 @@ if (!empty($_POST['username']) && !empty($_POST['password'])) {
         </form>
         <a href="signup.php">Sign up here!</a>
         <?php 
-            if(!empty($GLOBALS['failedLogin'])) echo "<span class='failure'>Incorrect username or password</span>" 
+            if (!empty($GLOBALS['failedLogin'])) echo "<span class='failure'>Incorrect username or password</span>" 
         ?>
     </div>
 </body>

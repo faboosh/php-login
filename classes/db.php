@@ -1,3 +1,5 @@
+
+
 <?php
 class DB 
 {
@@ -18,9 +20,9 @@ class DB
     {
         try {
             $this->pdo = new PDO(
-                "mysql:host=$this->_host;
-                port=$this->_port;
-                dbname=$this->_db;",
+                "mysql:host=".$this->_host.";
+                port=".$this->_port.";
+                dbname=".$this->_db.";",
                 $this->_user, 
                 $this->_password,
                 $this->_options
