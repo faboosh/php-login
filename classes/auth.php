@@ -34,7 +34,6 @@ class Auth
     public function __construct()
     {
         $dbclass = new DB();
-        var_dump($dbclass);
         $this->_db = $dbclass->pdo;
     }
 
@@ -51,9 +50,8 @@ class Auth
         $statement = $this->_db->prepare($query);
         $statement->bindValue(':username', $username, PDO::PARAM_STR);
 
-        $found = $statement->execute();
-        //$statement->debugDumpParams();
-        print_r($statement->fetch());      
+        $statement->execute();
+        $found = (bool)$statement->fetch(PDO::FETCH_ASSOC); 
         return $found;
     }
 

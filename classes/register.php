@@ -23,10 +23,10 @@ class Register
             //echo "User to be registered: $username <br>";
             //echo "Found: ".$this->_auth->isRegistered($username);
             $found = $this->_auth->isRegistered($username);
-            echo $found;
+            /*echo $found;
             if ($found) {
                 echo "hejehekwhrkwhlkfha";
-            }
+            }*/
             if (!$found) {
                 $passwordHash = password_hash(
                     $password, PASSWORD_BCRYPT, array("cost" => 12)
