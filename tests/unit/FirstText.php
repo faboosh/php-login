@@ -6,6 +6,7 @@ class FirstTest extends TestCase
 {
     public function testThetest() {
 
-        $this->assertTrue(true);
+        $c = 22;
+        $this->assertEquals($c, 20);
     }
 }
