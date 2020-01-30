@@ -11,7 +11,7 @@
      * @license  Open Source
      * @link     none
      * */
-include_once "db.php";
+require_once "DB.php";
 
     /**  
      * Authentication packade
@@ -24,7 +24,7 @@ include_once "db.php";
      * @license  Open Source
      * @link     none
      * */
-class Auth
+class AuthUser
 {
     private $_db;
 
@@ -87,5 +87,27 @@ class Auth
         } else {
             return false;
         }
+    }
+
+    /**  
+     * Gets username from session
+     * 
+     * @return bool based on if username is string or not empty
+     * */
+    public static function getUser() 
+    {
+        return $_SESSION['username'];
+    }
+
+    /**  
+     * Saves username to session
+     * 
+     * @param $username Username to save
+     * 
+     * @return bool based on if username is string or not empty
+     * */
+    public static function setUser($username) 
+    {
+        $_SESSION['username'] = $username;
     }
 }

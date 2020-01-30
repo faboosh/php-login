@@ -1,11 +1,23 @@
 <?php
+/**  
+ * Secret page
+ * php version: 7.3.1
+ * 
+ * @category Util_Classes
+ * @package  Php-login
+ * @author   faboosh <fabulo1998@gmail.com>
+ * @author   ashurw <ashurw@gmail.com>
+ * @author   robin_neuman <robinneuman@hotmail.com>
+ * @license  Open Source
+ * @link     none
+ * */
+session_start();
 
-    session_start();
+require_once "classes/AuthUser.php";
 
-    if(!isset($_SESSION['username'])) {
-        header('Location: index.php');
-    }
-
+if (empty(AuthUser::getUser())) {
+    header('Location: index.php');
+}
 ?>
 
 
@@ -20,7 +32,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>ur a wizard <?php echo $_SESSION['username'] ?></h1>
+        <h1>ur a wizard <?php echo AuthUser::getUser() ?></h1>
     </div>    
 </body>
 </html>

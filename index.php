@@ -1,22 +1,23 @@
 <?php 
-/**
- * MyClass File Doc Comment
+/**  
+ * Index page
+ * php version: 7.3.1
  * 
- * PHP version 7
- * 
- * @category MyClass
- * @package  MyPackage
- * @author   Display Name <robin@gmail.com>
- * @license  http://www.gnu.org/copyleft/gpl.html GNU General Public License
- * @link     http://www.hashbangcode.com/ * 
- */
+ * @category Util_Classes
+ * @package  Php-login
+ * @author   faboosh <fabulo1998@gmail.com>
+ * @author   ashurw <ashurw@gmail.com>
+ * @author   robin_neuman <robinneuman@hotmail.com>
+ * @license  Open Source
+ * @link     none
+ * */
 
-require_once "./classes/login.php";
+require_once "./classes/Login.php";
 
 $login = new Login();
 
 if (!empty($_POST['username']) && !empty($_POST['password'])) {
-        $login->loginUser($_POST['username'], $_POST['password']);
+    $login->loginUser($_POST['username'], $_POST['password']);
 }
 ?>
 
@@ -39,7 +40,9 @@ if (!empty($_POST['username']) && !empty($_POST['password'])) {
         </form>
         <a href="signup.php">Sign up here!</a>
         <?php 
-            if (!empty($GLOBALS['failedLogin'])) echo "<span class='failure'>Incorrect username or password</span>" 
+        if (!empty($GLOBALS['failedLogin'])) {
+             echo "<span class='failure'>Incorrect username or password</span>";
+        }
         ?>
     </div>
 </body>

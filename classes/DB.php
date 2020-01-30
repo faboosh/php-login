@@ -1,5 +1,30 @@
 <?php
-class DB 
+/**  
+ * Connection to SQL database
+ * php version: 7.3.1
+ * 
+ * @category Util_Classes
+ * @package  Php-DB
+ * @author   faboosh <fabulo1998@gmail.com>
+ * @author   ashurw <ashurw@gmail.com>
+ * @author   robin_neuman <robinneuman@hotmail.com>
+ * @license  Open Source
+ * @link     none
+ * */
+
+/**  
+ * DB class
+ * php version: 7.3.1
+ * 
+ * @category Util_Classes
+ * @package  Php-DB
+ * @author   faboosh <fabulo1998@gmail.com>
+ * @author   ashurw <ashurw@gmail.com>
+ * @author   robin_neuman <robinneuman@hotmail.com>
+ * @license  Open Source
+ * @link     none
+ * */
+class DB
 {
     private $_host = "127.0.0.1";
     private $_port = 3306;
@@ -13,7 +38,11 @@ class DB
     ];
 
     public $pdo;
-
+    /**  
+     * Connection to SQL database.
+     * Throws exception on failed
+     * connetion
+     * */
     function __construct() 
     {
         try {

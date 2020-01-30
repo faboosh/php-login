@@ -1,5 +1,17 @@
 <?php
-require_once './classes/register.php';
+/**  
+ * Signup page
+ * php version: 7.3.1
+ * 
+ * @category Util_Classes
+ * @package  Php-login
+ * @author   faboosh <fabulo1998@gmail.com>
+ * @author   ashurw <ashurw@gmail.com>
+ * @author   robin_neuman <robinneuman@hotmail.com>
+ * @license  Open Source
+ * @link     none
+ * */
+require_once './classes/Register.php';
 $register = new Register();
 
 if (isset($_POST['username']) && isset($_POST['password'])) {
@@ -25,7 +37,9 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
         </form>
         <a href="index.php">Login here!</a>
         <?php
-            if (!empty($GLOBALS['failedReg'])) echo "<span class='failure'>" . $GLOBALS['failedReg'] . "</span>"
+        if (!empty($GLOBALS['failedReg'])) {
+            echo "<span class='failure'>" . $GLOBALS['failedReg'] . "</span>";
+        }                  
         ?>
     </div>
 </body>
