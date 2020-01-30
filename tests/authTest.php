@@ -1,20 +1,23 @@
 <?php
-/*use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestCase;
+
+require_once "classes/auth.php";
 
 class AuthTest extends TestCase
 {
+    private $_auth;
 
-    public function isRegisteredTest()
+    public function __construct() 
     {
-        $stack = [];
-        $this->assertSame(0, count($stack));
+        $this->_auth = new Auth();
+    }
 
-        array_push($stack, 'foo');
-        $this->assertSame('foo', $stack[count($stack)-1]);
-        $this->assertSame(1, count($stack));
-
-        $this->assertSame('foo', array_pop($stack));
-        $this->assertSame(0, count($stack));
+    public function testIsRegistered()
+    {
+        /*$username = [];*/
+        $username = 'fabian';
+        $this->assertEquals(true, $this->_auth->isRegistered($username));
+        //$this->assertSame(1, 1);
     }
 
     public function isValidUsernameTest() 
@@ -26,4 +29,4 @@ class AuthTest extends TestCase
     {
         
     }
-}*/
+}

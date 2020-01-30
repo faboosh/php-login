@@ -1,9 +1,7 @@
-
-
 <?php
 class DB 
 {
-    private $_host = "localhost";
+    private $_host = "127.0.0.1";
     private $_port = 3306;
     private $_db = "php_login";
     private $_user = "root";
@@ -27,6 +25,7 @@ class DB
                 $this->_password,
                 $this->_options
             );
+            $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
         } catch (PDOException $e) {
             echo "Error!: " . $e->getMessage() . "<br/>";
             die();
