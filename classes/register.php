@@ -19,15 +19,8 @@ class Register
 
     public function registerUser($username, $password)
     {
-        if (ctype_alnum($username)) {
-            //echo "User to be registered: $username <br>";
-            //echo "Found: ".$this->_auth->isRegistered($username);
-            $found = $this->_auth->isRegistered($username);
-            /*echo $found;
-            if ($found) {
-                echo "hejehekwhrkwhlkfha";
-            }*/
-            if (!$found) {
+        if ($this->_auth->isValidUsername($username)) {
+            if (!$this->_auth->isRegistered($username)) {
                 $passwordHash = password_hash(
                     $password, PASSWORD_BCRYPT, array("cost" => 12)
                 );
@@ -42,6 +35,7 @@ class Register
             } else {
                 $GLOBALS['failedReg'] = "Username already exists";
             }
+                return false;
         } else {
             $GLOBALS['failedReg'] = "Username must only contain letters and numbers";
             return false;

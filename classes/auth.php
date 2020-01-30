@@ -1,7 +1,7 @@
 <?php
     /**  
      * Connection to SQL database
-     * php version: 7.3.11
+     * php version: 7.3.1
      * 
      * @category Util_Classes
      * @package  Php-login
@@ -64,7 +64,7 @@ class Auth
      * */
     public function isValidUsername($username)
     {
-        return is_string($username) && $username != '';
+        return ctype_alnum($username);
     }
 
     /**  
